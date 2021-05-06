@@ -5,6 +5,15 @@ const getAll = async () => {
   return user;
 };
 
+const findUserByEmail = async (email) => {
+  const user = await User.query()
+    .first()
+    .where({ email })
+    .whereNotNull('password');
+  return user;
+};
+
 module.exports = {
   getAll,
+  findUserByEmail,
 };
